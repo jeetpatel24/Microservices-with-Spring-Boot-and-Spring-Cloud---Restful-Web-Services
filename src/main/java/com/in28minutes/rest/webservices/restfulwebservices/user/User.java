@@ -1,26 +1,22 @@
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.List;
 
 public class User {
-    private List<Integer> list;
     private Integer id;
+
+    @Size(min = 2, message = "name should have at least 2 characters")
     private String name;
+
+    @Past(message = "birth date must be a past date")
     private Date birthDate;
 
     public User(Integer id, String name, Date birthDate) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
-    }
-
-    public List<Integer> getList() {
-        return list;
-    }
-
-    public void setList(List<Integer> list) {
-        this.list = list;
     }
 
     public Integer getId() {
@@ -50,7 +46,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "list=" + list +
                 ", id=" + id +
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate +
